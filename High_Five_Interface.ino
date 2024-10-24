@@ -1,6 +1,5 @@
-// TM1637 SevenSegment Counter Wokwi Example
-//
-// https://wokwi.com/projects/339227323398095442
+// Try the simulation
+// https://wokwi.com/projects/412616408766429185
 
 #include <TM1637.h>
 
