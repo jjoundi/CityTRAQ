@@ -37,4 +37,34 @@ Protopie file:
     * Place the downloaded JSON key file in your project directory.
     * See code for use
 
+## How to make a raspberry pi run a python script on boot
+Let's say the name of the python script (called a 'service') is mqtt_pull_and_write.service and the python file is called Hi5.py
+```
+sudo nano /etc/systemd/system/mqtt_pull_and_write.service
+```
+Update the service file
+```
+[Unit]
+Description=MQTT Pull and Write Service
+After=network.target
 
+[Service]
+ExecStart=/home/jjoundi/citytraq/venv/bin/python3 /home/jjoundi/citytraq/Hi5.py
+WorkingDirectory=/home/jjoundi/citytraq
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=jjoundi
+
+[Install]
+WantedBy=multi-user.target
+```
+Reload Systemd and Restart the Service:
+```
+sudo systemctl daemon-reload
+sudo systemctl restart mqtt_pull_and_write.service
+```
+Check the status
+```
+sudo systemctl status mqtt_pull_and_write.service
+```
