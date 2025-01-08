@@ -1,13 +1,54 @@
 # CityTRAQ
-Building interfaces for the CityTRAQ project
+This repo is the main repo for the CityTRAQ project.
+This project aims at increasing air quality awareness at schools.   
+The installation has 3 parts:
+* A mobility tracker (the High Five Robot)
+* An interactive display
+* A playground bike installation
 
-Figma file: https://www.figma.com/design/ofaMDt9rZNW918LpECFY7c/CityTraq?node-id=0-1&node-type=canvas&t=k0b37edLJHGb4BCb-0
+# Components
 
-Protopie file: 
+**High 5 robot**
+* Big cutout board
+* Wood for construction
+* Arcade buttons
+* Arduino Nano 33 IOT
+* LED matrixes   
 
-## Google drive with API calls:
+**Interactive display**
+* Big sreen
+* Even bigger coutour board
+* Wood for construction
+* Big screen
+* Raspi 5
 
-**How to write data to a Google Sheet**
+**Design files**
+
+🖊️ [Figma File](https://www.figma.com/design/ofaMDt9rZNW918LpECFY7c/CityTraq?node-id=0-1&node-type=canvas&t=k0b37edLJHGb4BCb-0)  
+🖥️ [Protopie file]()
+
+## Code
+* [Arduino code](HighFive_Interface_w_Data.ino) for the High Five robot (sends data to MQTT)
+* [High Five server code](main/MQTT%20pull_and_write.py) (listens for MQTT data and saves in a Google Sheet)
+* [Air quality aggregatror script](main/AQpuller.py) (Python script to aggregate data to visualize in protopie)
+
+### Running the code
+Activate High 5 server
+```
+$ cd citytraq
+$ source venv/bin/activate
+$ python HI5.py
+```
+Retreive aggregated air quality data
+```
+$ cd citytraq
+$ source venv/bin/activate
+$ python AQpuller.py
+```
+
+## Background: Saving data in Google Sheets
+
+**(How to write data to a Google Sheet)**
 
 * Create a Google Cloud Platform (GCP) Project:
     * Click on the project drop-down and select "New project"
@@ -36,35 +77,3 @@ Protopie file:
 * Use the JSON Key File in Your Python Script:
     * Place the downloaded JSON key file in your project directory.
     * See code for use
-
-## How to make a raspberry pi run a python script on boot
-Let's say the name of the python script (called a 'service') is mqtt_pull_and_write.service and the python file is called Hi5.py
-```
-sudo nano /etc/systemd/system/mqtt_pull_and_write.service
-```
-Update the service file
-```
-[Unit]
-Description=MQTT Pull and Write Service
-After=network.target
-
-[Service]
-ExecStart=/home/jjoundi/citytraq/venv/bin/python3 /home/jjoundi/citytraq/Hi5.py
-WorkingDirectory=/home/jjoundi/citytraq
-StandardOutput=inherit
-StandardError=inherit
-Restart=always
-User=jjoundi
-
-[Install]
-WantedBy=multi-user.target
-```
-Reload Systemd and Restart the Service:
-```
-sudo systemctl daemon-reload
-sudo systemctl restart mqtt_pull_and_write.service
-```
-Check the status
-```
-sudo systemctl status mqtt_pull_and_write.service
-```
