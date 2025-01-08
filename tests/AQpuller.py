@@ -45,7 +45,7 @@ if response.status_code == 200:
     last_read = data.get('last_read', {})
     ts = last_read.get('ts')
     value = last_read.get('value')
-    print(f"Krekelberg Live || Timestamp: {ts}, Value: {value}")
+    print(f"Received data from Krekelberg Live || Value: {value}")
 
     # Convert the ts to a human-readable timestamp
     human_ts = datetime.utcfromtimestamp(ts / 1000).strftime('%Y-%m-%d %H:%M:%S')
@@ -70,7 +70,7 @@ if response.status_code == 200:
     last_read = data.get('last_read', {})
     ts = last_read.get('ts')
     value = last_read.get('value')
-    print(f"Louis Schuermanstraat Live || Timestamp: {ts}, Value: {value}")
+    print(f"Received data from Louis Schuermanstraat Live || Value: {value}")
 
     # Convert the ts to a human-readable timestamp
     human_ts = datetime.utcfromtimestamp(ts / 1000).strftime('%Y-%m-%d %H:%M:%S')
@@ -81,8 +81,6 @@ if response.status_code == 200:
 
 else:
     print(f"Failed to retrieve data: {response.status_code}")
-
-
 
 # Make a GET request to the API - Uurgemiddelden laatste 24 uur Krekel #
 ########################################################################
@@ -102,7 +100,8 @@ response = requests.get(url, auth=HTTPBasicAuth(username, password))
 # Check if the request was successful
 if response.status_code == 200:
     data = response.json()
-    
+    print("Received data from Krekelberg, calculating hourly averages ... ")
+
     # Initialize a dictionary to store values by hour
     hourly_values = defaultdict(list)
     hourly_timestamps = {}
@@ -142,7 +141,8 @@ response = requests.get(url, auth=HTTPBasicAuth(username, password))
 # Check if the request was successful
 if response.status_code == 200:
     data = response.json()
-    
+    print("Received data from Louis Schuerman straat, calculating hourly averages ... ")
+
     # Initialize a dictionary to store values by hour
     hourly_values = defaultdict(list)
     hourly_timestamps = {}
