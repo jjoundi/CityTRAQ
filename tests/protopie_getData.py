@@ -1,3 +1,5 @@
+# This script is a simple Python script that sends and receives messages from Protopie. It uses the socketio library to connect to the Protopie server and send and receive messages. The script connects to the server, identifies itself as 'python', and then waits for messages from Protopie. When a message is received, it prints the message to the console. The script also prompts the user to input a message id and value, which it then sends to Protopie. The script will continue to prompt the user for input and send messages until it is terminated.
+
 #!/usr/bin/env python3
 # pip install python-socketio
 # python -m pip install websocket-client

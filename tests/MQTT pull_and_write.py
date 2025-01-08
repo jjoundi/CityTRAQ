@@ -1,3 +1,5 @@
+# THis script listens to data from the MQTT broker and writes it to a Google Sheet
+
 # dependencies 
 # pip install paho-mqtt, gspread, oauth2client
 

@@ -1,4 +1,4 @@
-# This script pulls aur qualitay data from an API and writes it to a Google Sheet
+# This script pulls air qualitay data from an API and writes it to a Google Sheet
 
 # dependencies 
 # pip install gspread, oauth2client, requests
