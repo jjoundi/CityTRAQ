@@ -31,6 +31,7 @@ The installation has 3 parts:
 * [Arduino code](HighFive_Interface_w_Data.ino) for the High Five robot (sends data to MQTT)
 * [High Five server code](main/HI5.py) (listens for MQTT data and saves in a Google Sheet)
 * [Air quality aggregatror script](main/AQpuller.py) (Python script to aggregate data to visualize in protopie)
+* [Socket IO](main/protopie.py) that listens for Protopie calls and gives the required data back
 
 ### Running the code
 Activate High 5 server
@@ -38,6 +39,12 @@ Activate High 5 server
 $ cd citytraq
 $ source venv/bin/activate
 $ python HI5.py
+```
+Activate Socket IO server
+```
+$ cd citytraq
+$ source venv/bin/activate
+$ python protopie.py
 ```
 Retreive aggregated air quality data
 ```
