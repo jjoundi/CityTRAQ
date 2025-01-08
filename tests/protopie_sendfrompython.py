@@ -1,3 +1,6 @@
+# Description: This script connects to the Protopie server and sends data to Protopie when requested.
+# More specifically, this script listens for a message from Protopie with the messageId 'update_hi5'. When this message is received, the script fetches the latest data from a Google Sheet and sends it to Protopie.
+
 #!/usr/bin/env python3
 # pip install python-socketio
 # python -m pip install websocket-client
