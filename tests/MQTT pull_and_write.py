@@ -3,7 +3,7 @@
 
 # niet vergeten switchen: auto, voetganger en fiets 
 
-#linraries
+#libraries
 import paho.mqtt.client as mqtt  
 
 # MQTT broker details
