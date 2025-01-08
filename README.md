@@ -29,7 +29,7 @@ The installation has 3 parts:
 
 ## Code
 * [Arduino code](HighFive_Interface_w_Data.ino) for the High Five robot (sends data to MQTT)
-* [High Five server code](main/MQTT%20pull_and_write.py) (listens for MQTT data and saves in a Google Sheet)
+* [High Five server code](main/HI5.py) (listens for MQTT data and saves in a Google Sheet)
 * [Air quality aggregatror script](main/AQpuller.py) (Python script to aggregate data to visualize in protopie)
 
 ### Running the code
