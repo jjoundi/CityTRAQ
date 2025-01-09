@@ -53,6 +53,26 @@ $ source venv/bin/activate
 $ python AQpuller.py
 ```
 
+## Background: Audiofiles
+To play the audio files, we are using the [DF Mini](https://www.tinytronics.nl/en/audio/audio-sources/dfrobot-dfplayer-mini-mp3-module). With an SD card. This module communicated of the Arduino TX en RX (Serial1 on Arduino Nano 33IOT).   
+
+voices:
+* The voices say thank you in 9 languages
+* These are the 9 most spoken languages in Belgium ([source](https://nl.wikipedia.org/wiki/Talen_in_Belgi%C3%AB))
+* Generated via Google Translate and Camptured using Chrome Audio Capture
+
+setup:
+* Prepare an SD card:
+    * folder `MP3` in root
+    * filenames as 0001.mp3 (see (audiofiles)[main/mp3/])
+* wires:
+    * Arduino RX to DF player TX
+    * Arduino TX (via 1k resistor) to DF player RX
+    * Arduino GND to DF player GND
+    * Arduino 5V to DF player VCC (5V pads on nano need be soldered, or get 5V from external)
+    * Speaker - to DF player SPK1
+    * Speaker + to DF player SPK2
+
 ## Background: Saving data in Google Sheets
 
 **(How to write data to a Google Sheet)**
