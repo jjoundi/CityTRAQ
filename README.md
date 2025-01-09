@@ -2,7 +2,7 @@
 This repo is the main repo for the installation built in the city of Ghent, in the context of the EU Life project [CityTRAQ](https://www.life-citytraq.eu/) project. 
 This project aims at increasing air quality awareness at elementary schools, making use of ream time data (both air quality data, self-reported monility data and objective mobility data).  
 
-*An imec-MICT-UGent feat. design.nexus project, By Jamil Joundi, Bas Baccarne, Dennis Ossei Tutu, Tim Theys & Olivia Willems, in close collabotation with the City of Ghent, VMM, and basisschool De Krekel.*
+*An imec-MICT-UGent feat. design.nexus project, By Jamil Joundi, Bas Baccarne, Dennis Ossei Tutu, Tim Theys & Olivia De Ruyck, in close collabotation with the City of Ghent, VMM, and basisschool De Krekel.*
 
 The installation has 3 parts:
 * A **mobility tracker** (the High Five Robot), that measures school transport behavior using arcade buttons and counters.
@@ -35,7 +35,7 @@ Data sources:
 **Design files**
 
 🖊️ [Figma File](https://www.figma.com/design/ofaMDt9rZNW918LpECFY7c/CityTraq?node-id=0-1&node-type=canvas&t=k0b37edLJHGb4BCb-0)  
-🖥️ [Protopie file]()
+🖥️ [Protopie file](https://universiteitgent.protopie.cloud/p/27dabdd85df1a2d35c851425?ui=true&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23F5F5F5&bgImage=undefined&playSpeed=1)
 
 ## Code
 * [Arduino code](main/HI5.ino) for the High Five robot (sends data to MQTT)
@@ -74,7 +74,7 @@ voices:
 setup:
 * Prepare an SD card:
     * folder `MP3` in root
-    * filenames as 0001.mp3 (see (audiofiles)[main/mp3/])
+    * filenames as 0001.mp3 (see [audiofiles](data/mp3/))
 * wires:
     * Arduino RX to DF player TX
     * Arduino TX (via 1k resistor, if you're working on 5V or get unstable connections) to DF player RX
