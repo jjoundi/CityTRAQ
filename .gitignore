@@ -2,3 +2,7 @@ tests/key.json
 main/key.json
 tests/credentials.txt
 main/credentials.txt
+main/keys/key.json
+main/keys/credentials.txt
+tests/keys/credentials.txt
+tests/keys/key.json
