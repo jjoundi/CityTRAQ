@@ -35,7 +35,7 @@ Data sources:
 **Design files**
 
 🖊️ [Figma File](https://www.figma.com/design/ofaMDt9rZNW918LpECFY7c/CityTraq?node-id=0-1&node-type=canvas&t=k0b37edLJHGb4BCb-0)  
-🖥️ [Protopie file]()
+🖥️ [Protopie file](https://universiteitgent.protopie.cloud/p/27dabdd85df1a2d35c851425?ui=true&scaleToFit=true&enableHotspotHints=true&cursorType=touch&mockup=true&bgColor=%23F5F5F5&bgImage=undefined&playSpeed=1)
 
 ## Code
 * [Arduino code](main/HI5.ino) for the High Five robot (sends data to MQTT)
