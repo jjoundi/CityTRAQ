@@ -1,25 +1,35 @@
 # CityTRAQ
-This repo is the main repo for the CityTRAQ project.
-This project aims at increasing air quality awareness at schools.   
+This repo is the main repo for the installation built in the city of Ghent, in the context of the EU Life project [CityTRAQ](https://www.life-citytraq.eu/) project. 
+This project aims at increasing air quality awareness at elementary schools, making use of ream time data (both air quality data, self-reported monility data and objective mobility data).  
+
+*An imec-MICT-UGent feat. design.nexus project, By Jamil Joundi, Bas Baccarne, Dennis Ossei Tutu, Tim Theys & Olivia Willems, in close collabotation with the City of Ghent, VMM, and basisschool De Krekel.*
+
 The installation has 3 parts:
-* A mobility tracker (the High Five Robot)
-* An interactive display
-* A playground bike installation
+* A **mobility tracker** (the High Five Robot), that measures school transport behavior using arcade buttons and counters.
+* An **interactive display**, that gets data from several sources and shows this data using several screens. 
+* A **playground bike installation**, that engages children on the school yard to interact with these data.
+
+Data sources:
+* Self-reported mobility behavior (local)
+* Kunak sensor data (by VMM)
+* A 'telslang' that measures objective mobility using a pressure detecting strip on the street   
+
+🖥️ [Proxy Data Set](https://docs.google.com/spreadsheets/d/1YUWfkA1w6GezTzYUTnjYmWHWe1nIyDaAK0Ytp2pUTw0/edit?usp=sharing)
 
 # Components
 
 **High 5 robot**
 * Big cutout board
 * Wood for construction
-* Arcade buttons
+* 3 big arcade buttons
+* 3 Led matrices 
 * Arduino Nano 33 IOT
-* LED matrixes   
+* DFmini player
+* Sound system   
 
 **Interactive display**
 * Big sreen
 * Even bigger coutour board
-* Wood for construction
-* Big screen
 * Raspi 5
 
 **Design files**
@@ -28,7 +38,7 @@ The installation has 3 parts:
 🖥️ [Protopie file]()
 
 ## Code
-* [Arduino code](HighFive_Interface_w_Data.ino) for the High Five robot (sends data to MQTT)
+* [Arduino code](main/HI5.ino) for the High Five robot (sends data to MQTT)
 * [High Five server code](main/HI5.py) (listens for MQTT data and saves in a Google Sheet)
 * [Air quality aggregatror script](main/AQpuller.py) (Python script to aggregate data to visualize in protopie)
 * [Socket IO](main/protopie.py) that listens for Protopie calls and gives the required data back
@@ -73,7 +83,7 @@ setup:
     * Speaker - to DF player SPK1
     * Speaker + to DF player SPK2
 
-🖥️ [Sample code](tests/soundfx.ino)
+🖥️ [Sample code](tests/high_5_robot/soundfx.ino)
 
 ## Background: Saving data in Google Sheets
 
