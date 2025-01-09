@@ -13,6 +13,8 @@
 // Arduino 5V to DF player VCC (5V pads on nano need be soldered)
 // Speaker - to DF player SPK1
 // Speaker + to DF player SPK2
+// Arduino GND to button side 1
+// Arduino pin 9 to button side 2
 
 // File structure  (SD card):
 // files need to start with 4 digits: e.g. 0001.mp3, 0002.mp3, 0003.mp3, etc.
@@ -27,10 +29,24 @@
 #include "DFRobotDFPlayerMini.h"
 
 // pins
+#define BUTTONPIN 9
 #define AudioSerial Serial1
 DFRobotDFPlayerMini myDFPlayer;
 
+// variables
+int buttonState = 0;
+int lastButtonState = 0;
+
 void setup() {
+
+    Serial.begin(9600);
+
+    // set pins
+    pinMode(BUTTONPIN, INPUT_PULLUP);
+    
+    // Initialize lastButtonState to the current state of the button
+    lastButtonState = !digitalRead(BUTTONPIN);
+
     // initialize serial communication to the DF player (RX & TX)
     AudioSerial.begin(9600);
 
@@ -40,11 +56,15 @@ void setup() {
 }
 
 void loop() {
-    // play sound 
-    playSound();
-
-    // delay
-    delay(1000);
+    // print button state, one each time the button is pressed
+    buttonState = !digitalRead(BUTTONPIN);
+    if (buttonState != lastButtonState) {
+        if (buttonState == 1){
+            playSound();
+        }
+        lastButtonState = buttonState;
+    }
+    delay(10);
 }
 
 void playSound() {
