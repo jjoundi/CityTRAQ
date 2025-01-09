@@ -73,6 +73,8 @@ setup:
     * Speaker - to DF player SPK1
     * Speaker + to DF player SPK2
 
+🖥️ [Sample code](tests/soundfx.ino)
+
 ## Background: Saving data in Google Sheets
 
 **(How to write data to a Google Sheet)**
