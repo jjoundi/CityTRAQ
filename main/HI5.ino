@@ -43,8 +43,8 @@ int lastButtonState2 = HIGH; // Last state of button 2
 int lastButtonState3 = HIGH; // Last state of button 3
 
 // Wi-Fi Credentials
-const char* ssid = "telenet-6618ABB"; // network name
-const char* password = "mz4aEnepaweC";  //network password
+const char* ssid = "escape"; // network name
+const char* password = "tempdvdw24";  //network password
 
 // MQTT Credentials
 const char* mqtt_server = "broker.emqx.io";
@@ -223,13 +223,11 @@ void displayCounter(Adafruit_NeoMatrix &matrix, int counter) {
 void connectToWiFi() {
   Serial.println("Connecting to Wi-Fi...");
   WiFi.begin(ssid, password);
-  int attempts = 0;
-
-  while (WiFi.status() != WL_CONNECTED && attempts < 10) {
+  
+  while (WiFi.status() != WL_CONNECTED) {
     delay(2000);
-    Serial.print("Wi-Fi connection attempt ");
-    Serial.println(attempts + 1);
-    attempts++;
+    WiFi.begin(ssid, password);
+    Serial.println("Attempting to reconnect to Wi-Fi...");
   }
 
   if (WiFi.status() == WL_CONNECTED) {
