@@ -21,7 +21,7 @@ TOPIC = "CityTraqMobilityCounter"
 # Define the scope
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 # Add your service account key file
-creds = ServiceAccountCredentials.from_json_keyfile_name("./tests/key.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("./main/keys/key.json", scope)
 # Authorize the client
 client = gspread.authorize(creds)
 # Open the Google Sheet using the URL
@@ -67,7 +67,7 @@ def on_message(client, userdata, msg):
     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
     # Append the data to the log sheet
-    anno_data = [["Mode of Transport", "Count", "Timestamp"]]
+    anno_data = []
     for key, value in data_dict.items():
         anno_data.append([key, value, timestamp])
 
