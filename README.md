@@ -74,7 +74,7 @@ voices:
 setup:
 * Prepare an SD card:
     * folder `MP3` in root
-    * filenames as 0001.mp3 (see (audiofiles)[main/mp3/])
+    * filenames as 0001.mp3 (see [audiofiles][data/mp3/])
 * wires:
     * Arduino RX to DF player TX
     * Arduino TX (via 1k resistor, if you're working on 5V or get unstable connections) to DF player RX
