@@ -67,7 +67,7 @@ setup:
     * filenames as 0001.mp3 (see (audiofiles)[main/mp3/])
 * wires:
     * Arduino RX to DF player TX
-    * Arduino TX (via 1k resistor) to DF player RX
+    * Arduino TX (via 1k resistor, if you're working on 5V or get unstable connections) to DF player RX
     * Arduino GND to DF player GND
     * Arduino 5V to DF player VCC (5V pads on nano need be soldered, or get 5V from external)
     * Speaker - to DF player SPK1
