@@ -2,7 +2,7 @@
 This repo is the main repo for the installation built in the city of Ghent, in the context of the EU Life project [CityTRAQ](https://www.life-citytraq.eu/) project. 
 This project aims at increasing air quality awareness at elementary schools, making use of ream time data (both air quality data, self-reported monility data and objective mobility data).  
 
-*An imec-MICT-UGent feat. design.nexus project, By Jamil Joundi, Bas Baccarne, Dennis Ossei Tutu, Tim Theys & Olivia Willems, in close collabotation with the City of Ghent, VMM, and basisschool De Krekel.*
+*An imec-MICT-UGent feat. design.nexus project, By Jamil Joundi, Bas Baccarne, Dennis Ossei Tutu, Tim Theys & Olivia De Ruyck, in close collabotation with the City of Ghent, VMM, and basisschool De Krekel.*
 
 The installation has 3 parts:
 * A **mobility tracker** (the High Five Robot), that measures school transport behavior using arcade buttons and counters.
