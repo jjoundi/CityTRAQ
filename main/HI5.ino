@@ -267,9 +267,9 @@ void publishCounters() {
   unsigned long currentTime = millis();
   if (currentTime - lastTime > updateDelay) {
     StaticJsonDocument<128> doc;
-    doc["byBike"] = counter1;
+    doc["byCar"] = counter1;
     doc["onFoot"] = counter2;
-    doc["byCar"] = counter3;
+    doc["byBike"] = counter3;
 
   char message[128];
   serializeJson(doc, message);
