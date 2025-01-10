@@ -37,14 +37,18 @@ int counter1 = 0;  // Cyclist counter
 int counter2 = 0;  // Walking counter
 int counter3 = 0;  // Car counter
 
+// Timer
+unsigned long lastTime = 0;
+unsigned long updateDelay = 1000*60*3; // update each 3 minutes
+
 // button checker
 int lastButtonState1 = HIGH; // Last state of button 1
 int lastButtonState2 = HIGH; // Last state of button 2
 int lastButtonState3 = HIGH; // Last state of button 3
 
 // Wi-Fi Credentials
-const char* ssid = "escape"; // network name
-const char* password = "tempdvdw24";  //network password
+const char* ssid = ""; 
+const char* password = ""; 
 
 // MQTT Credentials
 const char* mqtt_server = "broker.emqx.io";
@@ -257,10 +261,12 @@ void connectToMQTT() {
 
 // Publish Counter Data --> MQTT 
 void publishCounters() {
-  StaticJsonDocument<128> doc;
-  doc["byBike"] = counter1;
-  doc["onFoot"] = counter2;
-  doc["byCar"] = counter3;
+  unsigned long currentTime = millis();
+  if (currentTime - lastTime > updateDelay) {
+    StaticJsonDocument<128> doc;
+    doc["byBike"] = counter1;
+    doc["onFoot"] = counter2;
+    doc["byCar"] = counter3;
 
   char message[128];
   serializeJson(doc, message);
@@ -271,4 +277,6 @@ void publishCounters() {
   } else {
     Serial.println("Failed to publish message.");
   }
+    lastTime = currentTime;
+  } 
 }
