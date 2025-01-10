@@ -39,7 +39,7 @@ int counter3 = 0;  // Car counter
 
 // Timer
 unsigned long lastTime = 0;
-unsigned long updateDelay = 1000*60*3; // update each 3 minutes
+unsigned long updateDelay = 1000*10; // update each 3 minutes
 
 // button checker
 int lastButtonState1 = HIGH; // Last state of button 1
@@ -47,8 +47,8 @@ int lastButtonState2 = HIGH; // Last state of button 2
 int lastButtonState3 = HIGH; // Last state of button 3
 
 // Wi-Fi Credentials
-const char* ssid = ""; 
-const char* password = ""; 
+const char* ssid = "";
+const char* password = "";
 
 // MQTT Credentials
 const char* mqtt_server = "broker.emqx.io";
@@ -192,6 +192,9 @@ void handleButtonPress(int buttonPin, int &counter, int &lastButtonState) {
       publishCounters();
       Serial.print("Button Press Detected. Counter: ");
       Serial.println(counter);
+      unsigned long currentTime = millis();
+      Serial.println(currentTime);
+      Serial.println(lastTime);
       playSound();
     }
     lastButtonState = buttonState;
