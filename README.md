@@ -160,5 +160,5 @@ For this project we use the following logic:
 @reboot /home/citytraq/.venv/bin/python /home/citytraq/main/log_boot.py
 @reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/HI5.py
 @reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/protopie.py
-45 * * * *  /home/citytraq/.venv/bin/python /home/citytraq/main/AQpuller.py.py
+45 * * * *  /home/citytraq/.venv/bin/python /home/citytraq/main/AQpuller.py
 ```
