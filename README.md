@@ -117,7 +117,7 @@ setup:
     * Place the downloaded JSON key file in your project directory.
     * See code for use
 
-# Background: cron jobs
+## Background: cron jobs
 Cron jobs allow you to run scripts as specific times.
 
 To check which cron jobs are running as a list (-l)
