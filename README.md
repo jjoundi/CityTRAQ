@@ -116,3 +116,35 @@ setup:
 * Use the JSON Key File in Your Python Script:
     * Place the downloaded JSON key file in your project directory.
     * See code for use
+
+# Background: cron jobs
+Cron jobs allow you to run scripts as specific times.
+
+To check which cron jobs are running as a list (-l)
+```
+$ cd crontab -l
+```
+To edit the list of cron jobs (-e-)  
+(If you're a first time user: choose nano as an editor the first time)
+```
+$ cd crontab -e
+```
+This opens the cron tab with many commented lines. You can replace this text with the following text (see [wiki](https://en.wikipedia.org/wiki/Cron)). This is a good overview of the structure.
+```
+# * * * * * <command to execute>
+# | | | | |
+# | | | | day of the week (0–6) (Sunday to Saturday; 
+# | | | month (1–12)             7 is also Sunday on some systems)
+# | | day of the month (1–31)
+# | hour (0–23)
+# minute (0–59)
+```
+A correct cron line is formatted like this. e.g. A star for the minutes means that it will run *every* minute. If you use a number, it will only run at that number. E.g. 20 * * * * * will run every 20th minute of every hour, of every day, of every month ,of every day of the week (not every 20 minues!). 
+
+If you want to run something every x minutes using a slash seperator `/` . Let's say every 5 minutes, this looks like this
+```
+*/5 * * * * [command]
+```
+You can use multiple moments using a comma  `,` seperator, or ranges with a minus  `-`   seperator.
+
+This is an interesting online editor [here](https://crontab.guru/), whcih translates your crontab to human language.
