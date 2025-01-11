@@ -147,4 +147,18 @@ If you want to run something every x minutes using a slash seperator `/` . Let's
 ```
 You can use multiple moments using a comma  `,` seperator, or ranges with a minus  `-`   seperator.
 
-This is an interesting online editor [here](https://crontab.guru/), whcih translates your crontab to human language.
+This is an interesting online editor [here](https://crontab.guru/), whcih translates your crontab to human language. 
+
+For this project we use the following logic:
+
+* On boot, [the boot is logged and a message is send as an alert](/main/log_boot.py)
+* On boot, [the python server to detect high fives is started](/main/HI5.py)
+* On boot, [the protopie socket io server is started](/main/protopie.py)
+* Every hour, [the air quality script gets the latest data](/main/AQpuller.py)
+
+```
+@reboot /home/citytraq/.venv/bin/python /home/citytraq/main/log_boot.py
+@reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/HI5.py
+@reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/protopie.py
+45 * * * *  /home/citytraq/.venv/bin/python /home/citytraq/main/AQpuller.py.py
+```
