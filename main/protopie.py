@@ -144,7 +144,7 @@ def on_message(data):
             # check if the entry is in the range
             entry_hour = int(entry[0])
             if range_start <= entry_hour <= range_end:
-                message = value+entry[1]+entry[0]+u
+                message = value+entry[1]+entry[0]+"u"
                 value = entry[4]
                 print('Sending data to Protopie:', message, ":",value)
                 io.emit('ppMessage', {'messageId':message, 'value':value})
