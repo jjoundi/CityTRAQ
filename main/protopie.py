@@ -46,6 +46,22 @@ address = 'http://localhost:9981'
 # create a socketio client
 io = socketio.Client()
 
+# don't do anything else until there is connection with the socket.io server
+def wait_for_server(address, retries=5, delay=5):
+    for _ in range(retries):
+        try:
+            # Attempt to connect to the server
+            io.connect(address)
+            print("Connected to the server")
+            return
+        except socketio.exceptions.ConnectionError:
+            print("Server not available, retrying...")
+            time.sleep(delay)
+    print("Failed to connect to the server after multiple attempts")
+
+# Wait for the server to be available
+wait_for_server(address)
+
 # function to handle the connection
 # identify the device as 'python' to the socket.io server
 @io.on('connect')
