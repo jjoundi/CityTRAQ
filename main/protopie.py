@@ -152,7 +152,7 @@ def on_message(data):
         data = manual_sheet.get_all_values()
 
         # RESPONSE
-        for entry in data[]: 
+        for entry in data: 
             message = entry[0]
             value = entry[1]
             print('Sending data to Protopie:', message, ":",value)
