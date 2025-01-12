@@ -13,6 +13,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import socket
 import time
+import datetime
 
 # don't do anything else until there is connection with the google server
 # retry every 5 seconds
@@ -112,12 +113,14 @@ def on_message(data):
             if entry[0] == "actual" and  entry[1] == "krekelberg":
                 message = "variabelekrekel"
                 value = entry[4]
+                print('Sending data to Protopie:', message, ":",value)
+                io.emit('ppMessage', {'messageId':message, 'value':value})
             elif entry[0] == "actual" and  entry[1] == "Louis Schuerman":
                 message = "variabelelouis"
                 value = entry[4]
-            print('Sending data to Protopie:', message, ":",value)
-            io.emit('ppMessage', {'messageId':message, 'value':value})
-
+                print('Sending data to Protopie:', message, ":",value)
+                io.emit('ppMessage', {'messageId':message, 'value':value})
+            
     # 3 # react if protopie sends an 'update_avg' message
     if messageId == 'update_avg':
         print('[SOCKET IO] Protopie requires an update of the airquality data (hourly averages).')
@@ -153,8 +156,8 @@ def on_message(data):
 
         # RESPONSE
         for entry in data: 
-            message = entry[0]
-            value = entry[1]
+            message = entry[3]
+            value = entry[4]
             print('Sending data to Protopie:', message, ":",value)
             io.emit('ppMessage', {'messageId':message, 'value':value})
 
