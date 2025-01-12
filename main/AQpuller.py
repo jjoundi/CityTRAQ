@@ -141,7 +141,7 @@ if response.status_code == 200:
     for hour in sorted(hourly_averages.keys()):
         # print(f"Hour: {hour}, Average Value: {hourly_averages[hour]}, Last Timestamp: {hourly_timestamps[hour]}")
 
-        new_row = [f"{hour}", "Krekelberg", hourly_timestamps[hour], datetime.utcfromtimestamp(hourly_timestamps[hour] / 1000).strftime('%Y-%m-%d %H:%M:%S'), hourly_averages[hour]]
+        new_row = [f"{hour}", "krekel", hourly_timestamps[hour], datetime.utcfromtimestamp(hourly_timestamps[hour] / 1000).strftime('%Y-%m-%d %H:%M:%S'), hourly_averages[hour]]
         transformed_data.append(new_row)
 
 else:
@@ -182,7 +182,7 @@ if response.status_code == 200:
     for hour in sorted(hourly_averages.keys()):
         # print(f"Hour: {hour}, Average Value: {hourly_averages[hour]}, Last Timestamp: {hourly_timestamps[hour]}")
 
-        new_row = [f"{hour}", "Louis Schuerman", hourly_timestamps[hour], datetime.utcfromtimestamp(hourly_timestamps[hour] / 1000).strftime('%Y-%m-%d %H:%M:%S'), hourly_averages[hour]]
+        new_row = [f"{hour}", "louis", hourly_timestamps[hour], datetime.utcfromtimestamp(hourly_timestamps[hour] / 1000).strftime('%Y-%m-%d %H:%M:%S'), hourly_averages[hour]]
         transformed_data.append(new_row)
 
 else:
