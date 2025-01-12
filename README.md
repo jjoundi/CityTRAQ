@@ -51,7 +51,7 @@ Data sources:
 ||byBike|10|
 |**update_realtime**|variabelekrekel|4.7|
 ||variabelelouis|9.0|
-|**update_realtime**|||
+|**update_avg**|||
 |*if currentTime < 11 hours*|valuekrekel4u|4.5|
 ||valuekrekel5u |4.7|
 ||valuekrekel6u |4.8|
