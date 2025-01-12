@@ -134,6 +134,11 @@ setup:
 ## Background: managing cron jobs
 Cron jobs allow you to run scripts as specific times.
 
+Give an overview of the python programs that are currently running:
+```python
+ps -ef | grep python 
+```
+
 To check which cron jobs are running as a list (-l)
 ```
 $ crontab -l
