@@ -192,6 +192,7 @@ For this project we use the following logic:
 
 ```
 @reboot /home/jjoundi/CityTRAQ/venv/bin/python /home/jjoundi/CityTRAQ/main/log_boot.py
+@reboot /home/jjoundi/Desktop/Connect/pc-linux
 @reboot	/home/jjoundi/CityTRAQ/venv/bin/python /home/jjoundi/CityTRAQ/main/HI5.py
 @reboot	/home/jjoundi/CityTRAQ/venv/bin/python /home/jjoundi/CityTRAQ/main/protopie.py
 45 * * * *  /home/jjoundi/CityTRAQ/venv/bin/python /home/jjoundi/CityTRAQ/main/AQpuller.py
