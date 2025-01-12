@@ -112,7 +112,7 @@ def on_message(data):
             if entry[0] == "actual" and  entry[1] == "krekelberg":
                 message = "variabelekrekel"
                 value = entry[4]
-            else if entry[0] == "actual" and  entry[1] == "Louis Schuerman":
+            elif entry[0] == "actual" and  entry[1] == "Louis Schuerman":
                 message = "variabelelouis"
                 value = entry[4]
             print('Sending data to Protopie:', message, ":",value)
@@ -131,7 +131,7 @@ def on_message(data):
             range_start = 4
             range_end = 8
             print(f('[MORNING] giving back data from ', range_start, 'to', range_end 'o\'clock'))
-        else if currentHour >=11:
+        elif currentHour >=11:
             range_start = 12
             range_end = 16
             print(f('[AFTERNOON] giving back data from ', range_start, 'to', range_end 'o\'clock'))
