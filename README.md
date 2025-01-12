@@ -221,7 +221,7 @@ pkill chromium
 
 ## Background: remote management of a raspi
 * To follow up the installation remotely, we're using [raspberry pi connect](https://connect.raspberrypi.com/)
-* To monitor the python scripts we're using Cronitorµ
+* To monitor the python scripts we're using [Cronitor](https://cronitor.io/)
 
    ```python
    curl https://cronitor.io/install-linux?sudo=1 -H "API-KEY: ..."  | sh
