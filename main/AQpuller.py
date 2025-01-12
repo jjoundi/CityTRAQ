@@ -11,6 +11,22 @@ from datetime import datetime, timedelta
 import requests
 from requests.auth import HTTPBasicAuth
 from collections import defaultdict
+import socket
+import time
+
+# don't do anything else until there is connection with the google server
+# retry every 5 seconds
+def is_connected():
+    try:
+        # Try to resolve the hostname
+        socket.gethostbyname('oauth2.googleapis.com')
+        return True
+    except socket.error:
+        return False
+# Wait until the network is available
+while not is_connected():
+    print("Waiting for network...")
+    time.sleep(5)
 
 # Google Sheets API details:
 # Define the scope

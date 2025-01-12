@@ -153,8 +153,8 @@ For this project we use the following logic:
 
 * On boot, [the boot is logged and a message is send as an alert](/main/log_boot.py)
 * On boot, [the python server to detect high fives is started](/main/HI5.py)
-* On boot, [the protopie socket io server is started](/main/protopie.py)
-* Every hour, [the air quality script gets the latest data](/main/AQpuller.py)
+* On boot, start the protopie connect server, delay, and [start the protopie socket io server](/main/protopie.py)
+* Every hour (at minute 45), [the air quality script gets the latest data](/main/AQpuller.py)
 
 ```
 @reboot /home/pi/citytraq/venv/bin/python /home/pi/citytraq/main/log_boot.py
