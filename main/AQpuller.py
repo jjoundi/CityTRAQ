@@ -32,7 +32,7 @@ while not is_connected():
 # Define the scope
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 # Add your service account key file
-creds = ServiceAccountCredentials.from_json_keyfile_name("./tests/key.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("/home/jjoundi/CityTRAQ/main/keys/key.json", scope)
 # Authorize the client
 client = gspread.authorize(creds)
 # Open the Google Sheet using the URL
@@ -41,7 +41,7 @@ sheet_AQ = spreadsheet.worksheet('AQ_live') # name of the sheet with ariquality 
 
 
 # Read username and password from the file
-with open('./tests/credentials.txt', 'r') as file:
+with open('/home/jjoundi/CityTRAQ/main/keys/credentials.txt', 'r') as file:
     username = file.readline().strip()
     password = file.readline().strip()
 

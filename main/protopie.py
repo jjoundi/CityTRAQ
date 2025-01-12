@@ -33,7 +33,7 @@ while not is_connected():
 # Define the scope
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
 # Add your service account key file
-creds = ServiceAccountCredentials.from_json_keyfile_name("./main/keys/key.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name("/home/jjoundi/CityTRAQ/main/keys/key.json", scope)
 # Authorize the client
 client = gspread.authorize(creds)
 # Open the Google Sheet using the URL
