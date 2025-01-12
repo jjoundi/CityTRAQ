@@ -221,9 +221,11 @@ pkill chromium
 
 ## Background: remote management of a raspi
 * To follow up the installation remotely, we're using [raspberry pi connect](https://connect.raspberrypi.com/)
-* To monitor the python scripts we're using Cronitor
+* To monitor the python scripts we're using Cronitorµ
+
    ```python
    curl https://cronitor.io/install-linux?sudo=1 -H "API-KEY: ..."  | sh
    cronitor discover
    ```
+   
 * For notifications, we're [writing boot timestamps](main/log_boot.py) to a google sheet and link that to an IFTT applet that sends us a message when the systems powered down and up again
