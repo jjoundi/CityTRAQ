@@ -227,3 +227,13 @@ For this project we use the following logic:
 
 * *issue:* It can be hard to monitor all these cron triggered python scripts running in the background. Especially to monitor if the script actually ran.
 * *solution:* First add the script to the crontab. Then manage the scripts using [Cronitor](https://cronitor.io/). This platform monitors the cro jobs and gives you a nice dashboard to manage and monitor all python scripts (you can manage up to 5 cronjobs in the free version).
+
+## Background: opening and closing webbrowsers in full scree
+To automatically load a browser in full screen (Crhomium):
+```
+chromium-browser --kiosk http://192.168.0.225:9981/pie?pieid=1
+```
+To close it again:
+```
+pkill chromium
+```
