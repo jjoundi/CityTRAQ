@@ -40,6 +40,7 @@ client = gspread.authorize(creds)
 spreadsheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1YUWfkA1w6GezTzYUTnjYmWHWe1nIyDaAK0Ytp2pUTw0/edit')
 hi5_sheet = spreadsheet.worksheet('Hi5_live') # name of the sheet with live HI5 data
 AQ_sheet = spreadsheet.worksheet('AQ_live') # name of the sheet with AQ data
+manual_sheet = spreadsheet.worksheet('manual') # name of the sheet with manual data
 
 # Change the address below to yours if localhost is not working
 address = 'http://localhost:9981'
@@ -82,6 +83,7 @@ def on_message(data):
     ############
     # TRIGGERS #
     ############
+    # documentation: https://github.com/jjoundi/CityTRAQ/?tab=readme-ov-file#socketio-call-response-documentation 
 
     # 1 # react if protopie sends an 'update_hi5' message
     if messageId == 'update_hi5':
@@ -99,7 +101,47 @@ def on_message(data):
             print('Sending data to Protopie:', message, ":",value)
             io.emit('ppMessage', {'messageId':message, 'value':value})
 
-    # 2 # react if protopie sends an 'AQ' message (airquality)
+    # 2 # react if protopie sends an 'update_realtime' message
+    if messageId == 'update_realtime':
+        print('[SOCKET IO] Protopie requires an update of the realtime airquality data.')
+        print('Getting the latest data from Google Sheets ...')
+        data = AQ_sheet.get_all_values()
+
+        # RESPONSE
+        for entry in data[1:]: 
+            if entry[0] == "actual" && entry[1] == "krekelberg":
+                message = "variabelekrekel"
+                value = entry[4]
+            else if entry[0] == "actual" && entry[1] == "Louis Schuerman":
+                message = "variabelelouis"
+                value = entry[4]
+            print('Sending data to Protopie:', message, ":",value)
+            io.emit('ppMessage', {'messageId':message, 'value':value})
+
+    # 3 # react if protopie sends an 'update_avg' message
+    if messageId == 'update_avg':
+        print('[SOCKET IO] Protopie requires an update of the airquality data (hourly averages).')
+        print('Getting the latest data from Google Sheets ...')
+        data = AQ_sheet.get_all_values()
+
+        # Time orientation
+        currentHour = datetime.now().hour
+        print(f'It is now {currentHour} o\'clock.')
+        if currentHour < 11:
+            range = 4:8
+            print(f('[MORNING] giving back data from ', range, 'o\'clock'))
+        else if currentHour >=11:
+            range = 12:16
+            print(f('[AFTERNOON] giving back data from ', range, 'o\'clock'))
+
+        # RESPONSE
+        for entry in data[1:]: 
+            message = entry[0]
+            value = entry[1]
+            print('Sending data to Protopie:', message, ":",value)
+            io.emit('ppMessage', {'messageId':message, 'value':value})
+
+    # 4 # react if protopie sends an 'update_manualdata' message
     if messageId == 'AQ':
         print('[SOCKET IO] Protopie requires an update of the airquality data.')
         print('Getting the latest data from Google Sheets ...')
