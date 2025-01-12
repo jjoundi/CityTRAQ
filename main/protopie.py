@@ -54,7 +54,6 @@ def on_connect():
     print('This script can now receive and send messages to Protopie ...')
     io.emit('ppBridgeApp', { 'name': 'Python script' })
 
-
 # function to handle incoming messages from protopie connect
 # message is stored as a dictionary in the 'data' variable, with the messageId and value as keys
 @io.on('ppMessage')
