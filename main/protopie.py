@@ -124,31 +124,35 @@ def on_message(data):
         print('Getting the latest data from Google Sheets ...')
         data = AQ_sheet.get_all_values()
 
-        # Time orientation
+        # Time orientation & time ranges
         currentHour = datetime.now().hour
         print(f'It is now {currentHour} o\'clock.')
         if currentHour < 11:
-            range = 4:8
-            print(f('[MORNING] giving back data from ', range, 'o\'clock'))
+            range_start = 4
+            range_end = 8
+            print(f('[MORNING] giving back data from ', range_start, 'to', range_end 'o\'clock'))
         else if currentHour >=11:
-            range = 12:16
-            print(f('[AFTERNOON] giving back data from ', range, 'o\'clock'))
+            range_start = 12
+            range_end = 16
+            print(f('[AFTERNOON] giving back data from ', range_start, 'to', range_end 'o\'clock'))
 
         # RESPONSE
         for entry in data[3:]: 
-            message = value+entry[1]+value[0]+u
-            value = entry[4]
-            print('Sending data to Protopie:', message, ":",value)
-            io.emit('ppMessage', {'messageId':message, 'value':value})
+            # check if the entry is in the range
+            if range_start <= entry[0] <= range_end:
+                message = value+entry[1]+entry[0]+u
+                value = entry[4]
+                print('Sending data to Protopie:', message, ":",value)
+                io.emit('ppMessage', {'messageId':message, 'value':value})
 
     # 4 # react if protopie sends an 'update_manualdata' message
-    if messageId == 'AQ':
-        print('[SOCKET IO] Protopie requires an update of the airquality data.')
+    if messageId == 'update_manualdata':
+        print('[SOCKET IO] Protopie requires an update of the manually entered data.')
         print('Getting the latest data from Google Sheets ...')
-        data = AQ_sheet.get_all_values()
+        data = manual_sheet.get_all_values()
 
         # RESPONSE
-        for entry in data[1:]: 
+        for entry in data[]: 
             message = entry[0]
             value = entry[1]
             print('Sending data to Protopie:', message, ":",value)
