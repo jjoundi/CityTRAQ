@@ -157,10 +157,10 @@ For this project we use the following logic:
 * Every hour, [the air quality script gets the latest data](/main/AQpuller.py)
 
 ```
-@reboot /home/citytraq/.venv/bin/python /home/citytraq/main/log_boot.py
-@reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/HI5.py
-@reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/protopie.py
-45 * * * *  /home/citytraq/.venv/bin/python /home/citytraq/main/AQpuller.py
+@reboot /home/pi/citytraq/venv/bin/python /home/pi/citytraq/main/log_boot.py
+@reboot	/home/pi/citytraq/venv/bin/python /home/pi/citytraq/main/HI5.py
+@reboot	/home/pi/citytraq/venv/bin/python /home/pi/citytraq/main/protopie.py
+45 * * * *  /home/pi/citytraq/venv/bin/python /home/pi/citytraq/main/AQpuller.py
 ```
 
 ### Managing cron scripts and boot logic
