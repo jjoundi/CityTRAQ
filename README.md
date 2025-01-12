@@ -53,7 +53,6 @@ Data sources:
 ||variabelelouis|9.0|
 |**update_realtime**|||
 |*if currentTime < 11 hours*|valuekrekel4u|4.5|
-||valuekrekel4u |4.7|
 ||valuekrekel5u |4.7|
 ||valuekrekel6u |4.8|
 ||valuekrekel7u |4.2|
