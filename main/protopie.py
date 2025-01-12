@@ -23,6 +23,7 @@ def is_connected():
         return True
     except socket.error:
         return False
+
 # Wait until the network is available
 while not is_connected():
     print("Waiting for network...")
@@ -40,24 +41,24 @@ spreadsheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1YUWfkA
 hi5_sheet = spreadsheet.worksheet('Hi5_live') # name of the sheet with live HI5 data
 AQ_sheet = spreadsheet.worksheet('AQ_live') # name of the sheet with AQ data
 
-# Change the address below to yours of localhost is not working
+# Change the address below to yours if localhost is not working
 address = 'http://localhost:9981'
 
 # create a socketio client
 io = socketio.Client()
 
 # don't do anything else until there is connection with the socket.io server
-def wait_for_server(address, retries=5, delay=5):
-    for _ in range(retries):
+def wait_for_server(address, delay=5):
+    while True:
         try:
-            # Attempt to connect to the server
-            io.connect(address)
-            print("Connected to the Socket.io Protpie server")
+            # Attempt to connect to the server if not already connected
+            if not io.connected:
+                io.connect(address)
+                print("Connected to the Socket.io Protopie server")
             return
         except socketio.exceptions.ConnectionError:
             print("Protopie Connect Server not available, retrying...")
             time.sleep(delay)
-    print("Failed to connect to the server after multiple attempts")
 
 # Wait for the server to be available
 wait_for_server(address)
@@ -82,7 +83,7 @@ def on_message(data):
     # TRIGGERS #
     ############
 
-    # 1 # react if protopie sends an 'update_h5' message
+    # 1 # react if protopie sends an 'update_hi5' message
     if messageId == 'update_hi5':
         print('[SOCKET IO] Protopie requires an update of the Hi5 data')
         print('Getting the latest data from Google Sheets ...')
@@ -111,9 +112,5 @@ def on_message(data):
             print('Sending data to Protopie:', message, ":",value)
             io.emit('ppMessage', {'messageId':message, 'value':value})
 
-# connect to the server
-io.connect(address)
-
 # keep the line open for receiving messages
-while True:
-  pass
+io.wait()
