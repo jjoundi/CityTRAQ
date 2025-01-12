@@ -43,6 +43,41 @@ Data sources:
 * [Air quality aggregatror script](main/AQpuller.py) (Python script to aggregate data to visualize in protopie)
 * [Socket IO](main/protopie.py) that listens for Protopie calls and gives the required data back
 
+## socket.io call-response documentation
+| call | response message | response value (example)|
+|------|------------------|-------------------------|
+|**update_hi5**|byCar|4|
+||onFoot|9|
+||byBike|10|
+|**update_realtime**|variabelekrekel|4.7|
+||variabelelouis|9.0|
+|**update_realtime**|||
+|*if currentTime < 11 hours*|valuekrekel4u|4.5|
+||valuekrekel4u |4.7|
+||valuekrekel5u |4.7|
+||valuekrekel6u |4.8|
+||valuekrekel7u |4.2|
+||valuekrekel8u |5.0|
+||valuelouis4u | 4.7|
+||valuelouis5u | 4.7|
+||valuelouis6u | 4.7|
+||valuelouis7u | 4.7|
+||valuelouis8u | 4.7|
+|*else*|valuekrekel12u|4.5|
+||valuekrekel13u |4.7|
+||valuekrekel14u |4.7|
+||valuekrekel15u |4.8|
+||valuekrekel16u |4.2|
+||valuelouis12u | 4.7|
+||valuelouis13u | 4.7|
+||valuelouis14u | 4.7|
+||valuelouis15u | 4.7|
+||valuelouis16u | 4.7|
+|**update_manualdata**|krekel_pieken|10|
+||krekel_carcount|10|
+||louis_pieken|10|
+||louis_pieken|10|
+
 ### Running the code
 Activate High 5 server
 ```
