@@ -109,10 +109,10 @@ def on_message(data):
 
         # RESPONSE
         for entry in data[1:]: 
-            if entry[0] == "actual" && entry[1] == "krekelberg":
+            if entry[0] == "actual" and  entry[1] == "krekelberg":
                 message = "variabelekrekel"
                 value = entry[4]
-            else if entry[0] == "actual" && entry[1] == "Louis Schuerman":
+            else if entry[0] == "actual" and  entry[1] == "Louis Schuerman":
                 message = "variabelelouis"
                 value = entry[4]
             print('Sending data to Protopie:', message, ":",value)
