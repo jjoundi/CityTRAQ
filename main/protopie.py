@@ -130,11 +130,11 @@ def on_message(data):
         if currentHour < 11:
             range_start = 4
             range_end = 8
-            print(f('[MORNING] giving back data from ', range_start, 'to', range_end 'o\'clock'))
+            print(f"[MORNING] giving back data from {range_start} to {range_end} o'clock")
         elif currentHour >=11:
             range_start = 12
             range_end = 16
-            print(f('[AFTERNOON] giving back data from ', range_start, 'to', range_end 'o\'clock'))
+            print(f"[MORNING] giving back data from {range_start} to {range_end} o'clock")
 
         # RESPONSE
         for entry in data[3:]: 
