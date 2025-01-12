@@ -136,12 +136,12 @@ Cron jobs allow you to run scripts as specific times.
 
 To check which cron jobs are running as a list (-l)
 ```
-$ cd crontab -l
+$ crontab -l
 ```
 To edit the list of cron jobs (-e-)  
 (If you're a first time user: choose nano as an editor the first time)
 ```
-$ cd crontab -e
+$ crontab -e
 ```
 This opens the cron tab with many commented lines. You can replace this text with the following text (see [wiki](https://en.wikipedia.org/wiki/Cron)). This is a good overview of the structure.
 ```
@@ -175,6 +175,7 @@ For this project we use the following logic:
 @reboot /home/jjoundi/Desktop/Connect/pc-linux
 @reboot	/home/jjoundi/CityTRAQ/venv/bin/python /home/jjoundi/CityTRAQ/main/HI5.py
 @reboot	/home/jjoundi/CityTRAQ/venv/bin/python /home/jjoundi/CityTRAQ/main/protopie.py
+@reboot chromium-browser --kiosk http://192.168.0.225:9981/pie?pieid=1
 45 * * * *  /home/jjoundi/CityTRAQ/venv/bin/python /home/jjoundi/CityTRAQ/main/AQpuller.py
 ```
 
@@ -220,4 +221,8 @@ pkill chromium
 
 ## Background: remote management of a raspi
 * To follow up the installation remotely, we're using [raspberry pi connect](https://connect.raspberrypi.com/)
+   ```
+   curl https://cronitor.io/install-linux?sudo=1 -H "API-KEY: ..."  | sh
+   cronitor discover
+   ```
 * For notifications, we're [writing boot timestamps](main/log_boot.py) to a google sheet and link that to an IFTT applet that sends us a message when the systems powered down and up again
