@@ -117,7 +117,7 @@ setup:
     * Place the downloaded JSON key file in your project directory.
     * See code for use
 
-# Background: cron jobs
+## Background: cron jobs
 Cron jobs allow you to run scripts as specific times.
 
 To check which cron jobs are running as a list (-l)
@@ -160,5 +160,5 @@ For this project we use the following logic:
 @reboot /home/citytraq/.venv/bin/python /home/citytraq/main/log_boot.py
 @reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/HI5.py
 @reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/protopie.py
-45 * * * *  /home/citytraq/.venv/bin/python /home/citytraq/main/AQpuller.py.py
+45 * * * *  /home/citytraq/.venv/bin/python /home/citytraq/main/AQpuller.py
 ```
