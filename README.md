@@ -77,26 +77,6 @@ Data sources:
 ||louis_pieken|10|
 ||louis_carcount|10|
 
-### Running the code
-Activate High 5 server
-```
-$ cd citytraq
-$ source venv/bin/activate
-$ python HI5.py
-```
-Activate Socket IO server
-```
-$ cd citytraq
-$ source venv/bin/activate
-$ python protopie.py
-```
-Retreive aggregated air quality data
-```
-$ cd citytraq
-$ source venv/bin/activate
-$ python AQpuller.py
-```
-
 ## Background: Audiofiles
 To play the audio files, we are using the [DF Mini](https://www.tinytronics.nl/en/audio/audio-sources/dfrobot-dfplayer-mini-mp3-module). With an SD card. This module communicated of the Arduino TX en RX (Serial1 on Arduino Nano 33IOT).   
 
@@ -151,7 +131,7 @@ setup:
     * Place the downloaded JSON key file in your project directory.
     * See code for use
 
-## Background: cron jobs
+## Background: managing cron jobs
 Cron jobs allow you to run scripts as specific times.
 
 To check which cron jobs are running as a list (-l)
@@ -237,3 +217,7 @@ To close it again:
 ```
 pkill chromium
 ```
+
+## Background: remote management of a raspi
+* To follow up the installation remotely, we're using [raspberry pi connect](https://connect.raspberrypi.com/)
+* For notifications, we're [writing boot timestamps](main/log_boot.py) to a google sheet and link that to an IFTT applet that sends us a message when the systems powered down and up again
