@@ -135,9 +135,9 @@ def on_message(data):
             print(f('[AFTERNOON] giving back data from ', range, 'o\'clock'))
 
         # RESPONSE
-        for entry in data[1:]: 
-            message = entry[0]
-            value = entry[1]
+        for entry in data[3:]: 
+            message = value+entry[1]+value[0]+u
+            value = entry[4]
             print('Sending data to Protopie:', message, ":",value)
             io.emit('ppMessage', {'messageId':message, 'value':value})
 
