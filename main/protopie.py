@@ -13,7 +13,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import socket
 import time
-import datetime
+from datetime import datetime
 
 # don't do anything else until there is connection with the google server
 # retry every 5 seconds
