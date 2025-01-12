@@ -52,10 +52,10 @@ def wait_for_server(address, retries=5, delay=5):
         try:
             # Attempt to connect to the server
             io.connect(address)
-            print("Connected to the server")
+            print("Connected to the Socket.io Protpie server")
             return
         except socketio.exceptions.ConnectionError:
-            print("Server not available, retrying...")
+            print("Protopie Connect Server not available, retrying...")
             time.sleep(delay)
     print("Failed to connect to the server after multiple attempts")
 
