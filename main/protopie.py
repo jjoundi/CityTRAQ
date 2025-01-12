@@ -137,14 +137,14 @@ def on_message(data):
         elif currentHour >=11:
             range_start = 12
             range_end = 16
-            print(f"[MORNING] giving back data from {range_start} to {range_end} o'clock")
+            print(f"[AFTERNOON] giving back data from {range_start} to {range_end} o'clock")
 
         # RESPONSE
         for entry in data[3:]: 
             # check if the entry is in the range
             entry_hour = int(entry[0])
             if range_start <= entry_hour <= range_end:
-                message = value+entry[1]+entry[0]+"u"
+                message = entry[1]+entry[0]+"u"
                 value = entry[4]
                 print('Sending data to Protopie:', message, ":",value)
                 io.emit('ppMessage', {'messageId':message, 'value':value})
