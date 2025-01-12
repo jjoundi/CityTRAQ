@@ -162,3 +162,33 @@ For this project we use the following logic:
 @reboot	/home/citytraq/.venv/bin/python /home/citytraq/main/protopie.py
 45 * * * *  /home/citytraq/.venv/bin/python /home/citytraq/main/AQpuller.py
 ```
+
+### Managing cron scripts and boot logic
+* *issue:* Python scripts that require connection to a server (in this case the Google API), will fail if you run them on boot.
+* *solution:* Add a failsafe to the beginning of pyhton code that requires internet connection:
+    ```python
+    # libraries
+    import socket
+    import time
+
+    # don't do anything else until there is connection with the google server
+    # retry every 5 seconds
+
+    def is_connected():
+        try:
+            # Try to resolve the hostname
+            socket.gethostbyname('oauth2.googleapis.com')
+            return True
+        except socket.error:
+            return False
+
+    # Wait until the network is available
+    while not is_connected():
+        print("Waiting for network...")
+        time.sleep(5)
+
+    # Put the rest of the script below this
+    ```
+
+* *issue:* It can be hard to monitor all these cron triggered python scripts running in the background. Especially to monitor if the script actually ran.
+* *solution:* First add the script to the crontab. Then manage the scripts using [Cronitor](https://cronitor.io/). This platform monitors the cro jobs and gives you a nice dashboard to manage and monitor all python scripts (you can manage up to 5 cronjobs in the free version).
