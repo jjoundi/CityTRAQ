@@ -227,10 +227,21 @@ pkill chromium
 ## Background: remote management of a raspi
 * To follow up the installation remotely, we're using [raspberry pi connect](https://connect.raspberrypi.com/)
 * To monitor the python scripts we're using [Cronitor](https://cronitor.io/)
-
    ```python
    curl https://cronitor.io/install-linux?sudo=1 -H "API-KEY: ..."  | sh
    cronitor discover
    ```
-   
+* Monitoring WiFi strength
+     ```
+     $ iwconfig wlan0
+     ```
+  Interpretation: 
+  * **Link quality** (70/70 is the best connection)
+  * **Signal level** (Strong: -30 dBm to -50 dBm, Good: -51 dBm to -60 dBm, Fair: -61 dBm to -70 dBm, Weak: -71 dBm to -80 dBm, Very weak: -81 dBm to -90 dBm, Non-usable: < -91 dBm)
+  * **Noise level** (Low: -90 dBm to -100 dBm, Moderate: -80 dBm to -89 dBm, High: -70 dBm to -79 dBm, Very high: -60 dBm or higher)
 * For notifications, we're [writing boot timestamps](main/log_boot.py) to a google sheet and link that to an IFTT applet that sends us a message when the systems powered down and up again
+
+# Background: Fixing WiFi stability
+* Option 1: [Add an extender to the mix](https://www.youtube.com/watch?v=v_wz0zQngnA)
+* Option 2: [Add an antenna to the Pi](https://hackaday.com/2016/03/18/hacking-the-raspberry-pi-wifi-antenna-for-more-db/)
+* Option 3: [Manage WiFi power](https://www.thedigitalpictureframe.com/stay-connected-enhancing-raspberry-pi-wi-fi-stability-by-turning-off-power-management/)
