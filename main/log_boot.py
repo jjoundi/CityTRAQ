@@ -32,7 +32,16 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 # Add your service account key file
 creds = ServiceAccountCredentials.from_json_keyfile_name("/home/jjoundi/CityTRAQ/main/keys/key.json", scope)
 # Authorize the client
-client = gspread.authorize(creds)
+def authorize_client():
+    try:
+        client = gspread.authorize(creds)
+        return client
+    except Exception as e:
+        print(f"Failed to authorize client: {e}")
+        time.sleep(5)
+        return authorize_client()
+
+client = authorize_client()
 # Open the Google Sheet using the URL
 spreadsheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1rPa1s33FuQhjH8xmab3BLgaVMThTJ2OO98Aii11TUmE/edit')
 bootsheet = spreadsheet.worksheet('bootlog')

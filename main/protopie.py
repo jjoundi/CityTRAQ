@@ -36,7 +36,16 @@ scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/au
 # Add your service account key file
 creds = ServiceAccountCredentials.from_json_keyfile_name("/home/jjoundi/CityTRAQ/main/keys/key.json", scope)
 # Authorize the client
-client = gspread.authorize(creds)
+def authorize_client():
+    try:
+        client = gspread.authorize(creds)
+        return client
+    except Exception as e:
+        print(f"Failed to authorize client: {e}")
+        time.sleep(5)
+        return authorize_client()
+
+client = authorize_client()
 # Open the Google Sheet using the URL
 spreadsheet = client.open_by_url('https://docs.google.com/spreadsheets/d/1YUWfkA1w6GezTzYUTnjYmWHWe1nIyDaAK0Ytp2pUTw0/edit')
 hi5_sheet = spreadsheet.worksheet('Hi5_live') # name of the sheet with live HI5 data
@@ -44,7 +53,7 @@ AQ_sheet = spreadsheet.worksheet('AQ_live') # name of the sheet with AQ data
 manual_sheet = spreadsheet.worksheet('manual') # name of the sheet with manual data
 
 # Change the address below to yours if localhost is not working
-address = 'http://localhost:9981'
+address = 'http://192.168.10.11:9981'
 
 # create a socketio client
 io = socketio.Client()
