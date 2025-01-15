@@ -76,7 +76,7 @@ else:
 # Make a GET request to the API - Live Louis Schuermanstraat #
 ##############################################################
 
-url = 'https://kunakcloud.com/openAPIv0/v1/rest/devices/0423440199/elements/NO2%20GCc/info'
+url = 'https://kunakcloud.com/openAPIv0/v1/rest/devices/0423440204/elements/NO2%20GCc/info'
 response = requests.get(url, auth=HTTPBasicAuth(username, password))
 
 # Check if the request was successful
@@ -151,7 +151,7 @@ else:
 #############################################################################################
 
 
-url = f'https://kunakcloud.com/openAPIv0/v1/rest/devices/0423440199/elements/NO2%20GCc/reads/fromTo?startTs={ts_start}&endTs={ts_end}'
+url = f'https://kunakcloud.com/openAPIv0/v1/rest/devices/0423440204/elements/NO2%20GCc/reads/fromTo?startTs={ts_start}&endTs={ts_end}'
 response = requests.get(url, auth=HTTPBasicAuth(username, password))
 
 # Check if the request was successful
