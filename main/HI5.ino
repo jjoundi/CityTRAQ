@@ -3,6 +3,11 @@
 // When a button is pressed, an audio file is played to thank the kids for their input
 // It also sends the count to a MQTT broker
 
+// local network
+const char* local_server_ip = "192.168.0.155"; // replace with local raspi server IP address
+const char* ssid = ""; // replace with local wifi SSID
+const char* password = ""; // replace with local wifi password
+
 // libraries
 #include <Adafruit_GFX.h>
 #include <Adafruit_NeoMatrix.h>
@@ -39,21 +44,19 @@ int counter3 = 0;  // Car counter
 
 // Timer
 unsigned long lastTime = 0;
-unsigned long updateDelay = 1000*10; // update each 3 minutes
+// unsigned long updateDelay = 1000*10; // update each 3 minutes
+unsigned long updateDelay = 10; // update each 10 milliseconds
 
 // button checker
 int lastButtonState1 = HIGH; // Last state of button 1
 int lastButtonState2 = HIGH; // Last state of button 2
 int lastButtonState3 = HIGH; // Last state of button 3
 
-// Wi-Fi Credentials
-const char* ssid = "";
-const char* password = "";
 
 // MQTT Credentials
-const char* mqtt_server = "broker.emqx.io";
+const char* mqtt_server = local_server_ip;
 const int mqtt_port = 1883;
-const char* topic_main = "CityTraqMobilityCounter";
+const char* topic_main = "/citytraq";
 
 // define the WiFi client
 WiFiClient wifiClient;
@@ -193,8 +196,8 @@ void handleButtonPress(int buttonPin, int &counter, int &lastButtonState) {
       Serial.print("Button Press Detected. Counter: ");
       Serial.println(counter);
       unsigned long currentTime = millis();
-      Serial.println(currentTime);
-      Serial.println(lastTime);
+      // Serial.println(currentTime);
+      // Serial.println(lastTime);
       playSound();
     }
     lastButtonState = buttonState;
@@ -211,6 +214,7 @@ void playSound() {
     Serial.print("Playing AudioFile: ");
     Serial.println(randomFile);
 }
+
 
 // Update LED Matrices with Counter Values
 void updateDisplays() {
