@@ -4,10 +4,22 @@ This project aims at increasing air quality awareness at elementary schools, mak
 
 *An imec-MICT-UGent feat. design.nexus project, By Jamil Joundi, Bas Baccarne, Dennis Osei Tutu, Tim Theys & Olivia De Ruyck, in close collabotation with the City of Ghent, VMM, and basisschool De Krekel.*
 
+<div align="center">  
+<img src="img/robot1.jpg" width="400"> <br>
+<figcaption><i>Picture: Stad Gent</i></figcaption>
+</div>
+
+
+
 The installation has 3 parts:
 * A **mobility tracker** (the High Five Robot), that measures school transport behavior using arcade buttons and counters.
 * An **interactive display**, that gets data from several sources and shows this data using several screens. 
 * A **playground bike installation**, that engages children on the school yard to interact with these data.
+
+<div align="center">  
+<img src="img/screen.png" height="200"> <img src="img/robot2.png" height="200"> <img src="img/bikes.png" height="200">  <br>
+<figcaption><i>Picture 1: Stad Gent        --         Picture 2: VRT NWS      --      Picture 3: svwg</i></figcaption>
+</div>
 
 Data sources:
 * Self-reported mobility behavior (local)
